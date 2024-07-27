@@ -1,4 +1,4 @@
-# infopercept_task
+# Infopercept Lerning Task
 This document contains a record of my learning progress in MERN and AWS.
 <hr>
 <h1>Day 1 : AWS</h1>
