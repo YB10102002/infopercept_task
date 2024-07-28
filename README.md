@@ -18,3 +18,13 @@ This document contains a record of my learning progress in MERN and AWS.
   1.What is MERN ?<br>
   2.How it is Work in frontend as well as backend ?
 <hr>
+<h1>Day 4 : MERN</h1>
+<h3>Topics Covered</h3>
+  1.Express App Setup<br>
+  2.Postman Setup<br>
+  3.MongoDB Setup<br>
+  4.API Endpoints<br>
+  5.Express & MongoDB Schemas,Models<br>
+  6.Express Router & API Routes<br>
+  7.MongoDB Atlas & Mongoose<br>
+<hr>
