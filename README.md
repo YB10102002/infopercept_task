@@ -30,7 +30,7 @@ This document contains a record of my learning progress in MERN and AWS.
 <hr>
 <h1>Day 5 : MERN</h1>
 <h3>Topics Covered</h3>
-  1.Express Controllers
-  2.Crud Operation in MongoDB
+  1.Express Controllers<br>
+  2.Crud Operation in MongoDB<br>
   3.Creating React App
 <hr>
