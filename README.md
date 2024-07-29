@@ -28,3 +28,9 @@ This document contains a record of my learning progress in MERN and AWS.
   6.Express Router & API Routes<br>
   7.MongoDB Atlas & Mongoose<br>
 <hr>
+<h1>Day 5 : MERN</h1>
+<h3>Topics Covered</h3>
+  1.Express Controllers
+  2.Crud Operation in MongoDB
+  3.Creating React App
+<hr>
