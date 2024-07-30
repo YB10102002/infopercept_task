@@ -34,3 +34,11 @@ This document contains a record of my learning progress in MERN and AWS.
   2.Crud Operation in MongoDB<br>
   3.Creating React App
 <hr>
+<h1>Day 6 : MERN</h1>
+<h3>Topics Covered</h3>
+  1.Fetching Data in React App From Database<br>
+  2.Add Data From React App to Database  <br>
+  3.Adding React Context<br>
+  4.Delete Data From Database By React App<br>
+  5.Handling Error Responses
+<hr>
