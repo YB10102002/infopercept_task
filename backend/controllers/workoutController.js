@@ -1,12 +1,13 @@
 const Workout = require('../models/WorkoutModel');
 const database = require('mongoose');
-//get all workouts
+
+// Get all workouts
 const allWorkouts = async (req, res) => {
     const w = await Workout.find({}).sort({ createdAt: -1 });
     res.status(200).json(w);
 }
-//------------------------------------------------------------------------------------------------------------------
-//get single workouts
+
+// Get single workout
 const singleWorkout = async (req, res) => {
     const { id } = req.params;
     if (!database.Types.ObjectId.isValid(id)) {
@@ -18,11 +19,25 @@ const singleWorkout = async (req, res) => {
     }
     res.status(200).json(w);
 }
-//------------------------------------------------------------------------------------------------------------------
-//create a new workout
+
+// Create a new workout
 const createWorkout = async (req, res) => {
-    const { title, reps, load } = req.body
-    //add doc to db
+    const { title, reps, load } = req.body;
+
+    let emptyFields = [];
+    if (!title) {
+        emptyFields.push('title');
+    }
+    if (!reps) {
+        emptyFields.push('reps');
+    }
+    if (!load) {
+        emptyFields.push('load');
+    }
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Please fill all the fields...', emptyFields });
+    }
+
     try {
         const w = await Workout.create({ title, reps, load });
         res.status(200).json(w);
@@ -31,8 +46,7 @@ const createWorkout = async (req, res) => {
     }
 }
 
-//------------------------------------------------------------------------------------------------------------------
-//delete a workout
+// Delete a workout
 const deleteWorkout = async (req, res) => {
     const { id } = req.params;
     if (!database.Types.ObjectId.isValid(id)) {
@@ -40,31 +54,28 @@ const deleteWorkout = async (req, res) => {
     }
     const w = await Workout.findOneAndDelete({ _id: id });
     if (!w) {
-        res.status(400).json({ error: 'No worksouts found!!! , delete failed...' });
+        return res.status(400).json({ error: 'No workouts found!!! Delete failed...' });
     }
     res.status(200).json(w);
 };
-//------------------------------------------------------------------------------------------------------------------
-//update a workout
+
+// Update a workout
 const updateWorkout = async (req, res) => {
     const { id } = req.params;
     if (!database.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({ error: 'No worksouts found!!! , update failed...' });
+        return res.status(404).json({ error: 'No workouts found!!! Update failed...' });
     }
-    const w = await Workout.findOneAndUpdate({ _id: id }, {
-        ...req.body
-    });
+    const w = await Workout.findOneAndUpdate({ _id: id }, { ...req.body });
     if (!w) {
-        res.status(404).json({ error: 'No worksouts found!!! , update failed...' });
+        return res.status(404).json({ error: 'No workouts found!!! Update failed...' });
     }
     res.status(200).json(w);
 }
 
-//------------------------------------------------------------------------------------------------------------------
 module.exports = {
     allWorkouts,
     singleWorkout,
     createWorkout,
     deleteWorkout,
     updateWorkout
-}
+};
