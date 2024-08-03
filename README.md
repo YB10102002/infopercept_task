@@ -42,3 +42,10 @@ This document contains a record of my learning progress in MERN and AWS.
   4.Delete Data From Database By React App<br>
   5.Handling Error Responses
 <hr>
+<h1>Day 9 : LARAVEL + REACT</h1>
+<h3>Topics Covered</h3>
+  1.Setup Project Tools/Requirement<br>
+  2.What is inertia and How it's Works ?<br>
+  3.Prepare Database<br>
+  4.Create Controllers<br>
+<hr>
