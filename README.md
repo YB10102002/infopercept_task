@@ -49,3 +49,8 @@ This document contains a record of my learning progress in MERN and AWS.
   3.Prepare Database<br>
   4.Create Controllers<br>
 <hr>
+<h1>Day 10/11 : LARAVEL + REACT</h1>
+<h3>Topics Covered</h3>
+  1.Create Controllers and Define Routes<br>
+  2.Render Project With Pagination<br>
+<hr>
