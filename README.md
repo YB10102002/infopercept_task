@@ -54,3 +54,12 @@ This document contains a record of my learning progress in MERN and AWS.
   1.Create Controllers and Define Routes<br>
   2.Render Project With Pagination<br>
 <hr>
+<h1>Day 12 : LARAVEL + REACT</h1>
+<h3>Topics Covered</h3>
+  1.Filtering Projects<br>
+  2.Sorting Of Projects<br>
+  3.Render Tasks<br>
+  4.Render Project view with Tasks<br>
+  5.Project Create<br>
+  6.Delete and Update Projects<br>
+<hr>
