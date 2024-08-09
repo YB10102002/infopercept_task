@@ -1,33 +1,25 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head , Link } from "@inertiajs/react";
-import { PROJECT_STATUS_CLASS_MAP, PROJECT_STATUS_TEXT_MAP } from "@/Constants.jsx";
+import { Head } from "@inertiajs/react";
+import { USER_STATUS_CLASS_MAP, USER_STATUS_TEXT_MAP } from "@/Constants.jsx";
 import TaskTable from "../Task/TaskTable";
 
-export default function Show({auth , project , tasks , queryParams , success}) {
+export default function Show({auth , user , tasks , queryParams}) {
     return (
         <AuthenticatedLayout 
                 user={auth.user}
                 header={
+                <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    {`User "${user.name}"`}
+                </h2>
+                }>
 
-                    <div className="flex justify-between items-center">
-                        <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                            {`Project "${project.name}"`}
-                        </h2>
-                        <Link href = {route('project.edit',project.id)} className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600">
-                                Update
-                        </Link>
-                    </div>
-                    
-                }
-            >
-
-                <Head title={`Project "${project.name}"`} />
+                <Head title={`User "${user.name}"`} />
                 <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                                 <div>
                                     <img 
-                                        src={project.image_path}
+                                        src={user.image_path}
                                         alt=""
                                         className="w-full h-64 object-cover"
                                     />
@@ -36,45 +28,45 @@ export default function Show({auth , project , tasks , queryParams , success}) {
                                 <div className="grid gap-1 grid-cols-2 mt-2">
                                         <div>
                                                 <div>
-                                                    <label className="font-bold text-lg">Project ID</label>
-                                                    <p className="mt-1">{project.id}</p>
+                                                    <label className="font-bold text-lg">User ID</label>
+                                                    <p className="mt-1">{user.id}</p>
                                                 </div>
                                                 <div className="mt-4">
-                                                    <label className="font-bold text-lg">Project Name</label>
-                                                    <p className="mt-1">{project.name}</p>
+                                                    <label className="font-bold text-lg">User Name</label>
+                                                    <p className="mt-1">{user.name}</p>
                                                 </div>
                                                 <div className="mt-4">
-                                                    <label className="font-bold text-lg">Project Status</label>
+                                                    <label className="font-bold text-lg">User Status</label>
                                                     <p className="mt-1">
                                                         <span className={"px-2 py-1 rounded text-white " + 
-                                                            PROJECT_STATUS_CLASS_MAP[project.status]
+                                                            USER_STATUS_CLASS_MAP[user.status]
                                                         }>
-                                                                {PROJECT_STATUS_TEXT_MAP[project.status]}
+                                                                {USER_STATUS_TEXT_MAP[user.status]}
                                                         </span>
                                                     </p>
                                                 </div>
                                                 <div className="mt-4">
-                                                    <label className="font-bold text-lg">Project Created By</label>
-                                                    <p className="mt-1">{project.createdBy.name}</p>
+                                                    <label className="font-bold text-lg">User Created By</label>
+                                                    <p className="mt-1">{user.createdBy.name}</p>
                                                 </div>
                                         </div>
                                         <div>
                                              <div>
-                                                <label className="font-bold text-lg">Project Due Date</label>
-                                                <p className="mt-1">{project.due_date}</p>
+                                                <label className="font-bold text-lg">User Due Date</label>
+                                                <p className="mt-1">{user.due_date}</p>
                                              </div>
                                              <div className="mt-4">
-                                                <label className="font-bold text-lg">Project Created Date</label>
-                                                <p className="mt-1">{project.created_at}</p>
+                                                <label className="font-bold text-lg">User Created Date</label>
+                                                <p className="mt-1">{user.created_at}</p>
                                              </div>
                                              <div className="mt-4">
-                                                <label className="font-bold text-lg">Project Updated By</label>
-                                                <p className="mt-1">{project.updatedBy.name}</p>
+                                                <label className="font-bold text-lg">User Updated By</label>
+                                                <p className="mt-1">{user.updatedBy.name}</p>
                                              </div>
                                         </div>
                                         <div className="mt-4">
-                                            <label className="font-bold text-lg">Project Description</label>
-                                            <p className="mt-1">{project.description}</p>
+                                            <label className="font-bold text-lg">User Description</label>
+                                            <p className="mt-1">{user.description}</p>
                                         </div>
                                 </div>
                             </div>
@@ -86,7 +78,7 @@ export default function Show({auth , project , tasks , queryParams , success}) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                             <div className="p-6 text-gray-900 dark:text-gray-100">
-                                        <TaskTable tasks={tasks} queryParams={queryParams} hideProjectColumn={true} success={success}/>
+                                        <TaskTable tasks={tasks} queryParams={queryParams} hideUserColumn={true}/>
                                 </div>
                             </div>
                         </div>

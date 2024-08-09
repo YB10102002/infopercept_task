@@ -4,8 +4,9 @@ import SelectInput from "@/Components/SelectInput";
 import TextInput from "@/Components/TextInput";
 import { TASK_STATUS_CLASS_MAP, TASK_STATUS_TEXT_MAP } from "@/Constants.jsx";
 import { Link, router } from "@inertiajs/react";
+import { Button } from "@headlessui/react";
 
-export default function TaskTable({tasks,queryParams = null , hideProjectColumn = false}) {
+export default function TaskTable({tasks,queryParams = null , hideProjectColumn = false , success}) {
 
     queryParams = queryParams || {}
     const searchFieldChanged = (name,value) => {
@@ -39,10 +40,19 @@ export default function TaskTable({tasks,queryParams = null , hideProjectColumn 
         router.get(route('task.index'),queryParams);
     } 
 
-
+    const deleteTask = (task) => {
+        if(!window.confirm('Are you sure want to delete ?'))
+        {
+            return;
+        }
+        router.delete(route('task.destroy',task.id));
+    }
 
     return (
         <>
+            {success && (
+                            <div className="bg-emerald-500 py-2 px-4 text-white rounded mb-4">{success}</div>
+                        )}
             <div className="overflow-auto">
                        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-gray-500">
@@ -57,7 +67,7 @@ export default function TaskTable({tasks,queryParams = null , hideProjectColumn 
                                     <div className="px-3 py-3 flex items-center justify-between gap-1">Image</div></th>
                                     <th>
                                         {!hideProjectColumn && (
-                                            <div className="px-3 py-3 flex items-center justify-between gap-1">Project Name</div>
+                                            <div className="px-3 py-3 flex items-center justify-between gap-1">Project  Name</div>
                                         )}
                                     </th>
                                     <TableHeading 
@@ -128,10 +138,14 @@ export default function TaskTable({tasks,queryParams = null , hideProjectColumn 
                                      {!hideProjectColumn && (
                                         <td className="px-3 py-2">{task.project.name}</td>
                                      )}
-                                     <td className="px-3 py-2">{task.name}</td>
+                                     <th className="px-3 py-2 text-white text-gray-100  hover:underline">
+                                        <Link href={route("task.show",task.id)}>
+                                             {task.name}
+                                        </Link>
+                                        </th>
                                      <td className="px-3 py-2">
                                         <span className={
-                                            "px-3 py-1 rounded text-white " + 
+                                            "px-3 py-1 rounded text-nowrap text-white " + 
                                             TASK_STATUS_CLASS_MAP[task.status] 
                                         }>
                                         {TASK_STATUS_TEXT_MAP[task.status]}
@@ -140,13 +154,13 @@ export default function TaskTable({tasks,queryParams = null , hideProjectColumn 
                                      <td className="px-3 py-2" text-nowrap:true="true">{task.created_at}</td>
                                      <td className="px-3 py-2" text-nowrap:true="true">{task.due_date}</td>
                                      <td className="px-3 py-2">{task.createdBy.name}</td>
-                                     <td>
-                                        <Link href={route('task.edit',task.id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1">
+                                     <td className="text-nowrap">
+                                        <Link href={route('task.edit',task.id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1 ">
                                             Update 
                                         </Link>
-                                        <Link href={route('task.destroy',task.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1">
+                                        <Button onClick={e => deleteTask(task)} className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1">
                                             Delete 
-                                        </Link>
+                                        </Button    >
                                      </td>
                                  </tr>
                                 ))}
