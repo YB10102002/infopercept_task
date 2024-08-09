@@ -63,3 +63,10 @@ This document contains a record of my learning progress in MERN and AWS.
   5.Project Create<br>
   6.Delete and Update Projects<br>
 <hr>
+<h1>Day 13 : LARAVEL + REACT</h1>
+<h3>Topics Covered</h3>
+  1.User CRUD Operation<br>
+  2.Task CRUD Operation<br>
+  3.Create My Task Page<br>
+  4.Create Dashboard<br>
+<hr>
