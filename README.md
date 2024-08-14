@@ -70,3 +70,11 @@ This document contains a record of my learning progress in MERN and AWS.
   3.Create My Task Page<br>
   4.Create Dashboard<br>
 <hr>
+<h1>Day 14 : AWS</h1>
+<h3>Topics Covered</h3>
+  1.AWS Creating Bucket<br>
+  2.AWS IAM Authorization<br>
+  3.AWS Creating API Gateway<br>
+  4.AWS Creating Lambda Function<br>
+  5.AWS DynamoDB<br>
+<hr>
